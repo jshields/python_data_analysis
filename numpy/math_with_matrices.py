@@ -19,6 +19,7 @@ class Vertex3d(object):
             [w]
         ])
 
+# http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
 vertex = Vertex3d(10, 10, 10)
 
 trans_x, trans_y, trans_z = (10, 0, 0)
@@ -37,5 +38,6 @@ expected = np.array([
 ])
 
 # order matters: Matrix * Vector
-compare = (translation_matrix * vertex.trans_vector) == expected
+# must use `dot` in numpy, not `*` operator
+compare = (np.dot(translation_matrix, vertex.trans_vector)) == expected
 assert compare.all()
