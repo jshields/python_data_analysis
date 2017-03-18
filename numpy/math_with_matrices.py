@@ -1,7 +1,7 @@
 """
 Matrix and Vector math
 """
-
+import numpy as np
 
 # Matrix * Vector translation for a 3D point
 class Vertex3d(object):
@@ -11,12 +11,15 @@ class Vertex3d(object):
         self.x = x
         self.y = y
         self.z = z
-        w = 1  # w as 1 means this is a position, not direction
-        self.trans_vector = np.array([
-            [x],
-            [y],
-            [z],
-            [w]
+        self._w = 1  # w as 1 means this is a position, not direction
+
+    @property
+    def trans_vector(self):
+        return np.array([
+            [self.x],
+            [self.y],
+            [self.z],
+            [self._w]
         ])
 
 # http://www.opengl-tutorial.org/beginners-tutorials/tutorial-3-matrices/
@@ -30,6 +33,7 @@ translation_matrix = np.array([
     [0, 0, 0, 1]
 ])
 
+# x should be translated by 10
 expected = np.array([
     [20],
     [10],
@@ -39,5 +43,6 @@ expected = np.array([
 
 # order matters: Matrix * Vector
 # must use `dot` in numpy, not `*` operator
-compare = (np.dot(translation_matrix, vertex.trans_vector)) == expected
+result = np.dot(translation_matrix, vertex.trans_vector)
+compare = result == expected
 assert compare.all()
