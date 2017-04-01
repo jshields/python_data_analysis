@@ -2,7 +2,9 @@ import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
 
+
 print('Using backend: ' + matplotlib.get_backend())
+
 
 def one_array_hardcoded():
     """
@@ -28,10 +30,10 @@ def quadratic_roots(a, b, c):
     a*x^2 + b*x + c = 0
     """
     # "plus" of "plus or minus"
-    x1 = -b + sqrt(b ^ 2 - 4*a*c) / 2*a
+    x1 = -b + sqrt(b ** 2 - 4*a*c) / 2*a
 
     # "minus" of "plus or minus"
-    x2 = -b - sqrt(b ^ 2 - 4*a*c) / 2*a
+    x2 = -b - sqrt(b ** 2 - 4*a*c) / 2*a
 
     return x1, x2
 
@@ -42,7 +44,7 @@ def quadratic():
     b = 3
     c = 4
     x_vals = np.arange(0.0, 2.0, 0.01)
-    y_vals = a*x_vals^2 + b*x_vals + c
+    y_vals = a*x_vals**2 + b*x_vals + c
 
     root_x1, root_x2 = quadratic_roots(a, b, c)
     roots_y = 0

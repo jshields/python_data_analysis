@@ -1,6 +1,8 @@
+"""Example of simple linear line drawn using `matplotlib.pyplot`"""
 import matplotlib
 import matplotlib.pyplot as plt
 import numpy as np
+
 
 print('Using backend: ' + matplotlib.get_backend())
 
